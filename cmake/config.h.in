@@ -1,0 +1,93 @@
+/* src/config.h.in.  Generated from gen_config_header.cmake by cmake.  */
+
+/* Define to 1 if you have the `arc4random' function. */
+#cmakedefine HAVE_ARC4RANDOM
+
+/* Define to 1 if you have the <a.out.h> header file. */
+#cmakedefine HAVE_A_OUT_H
+
+/* define if the compiler supports basic C++11 syntax */
+#cmakedefine HAVE_CXX11
+
+/* Define to 1 if you have the `getrandom' function. */
+#cmakedefine HAVE_GETRANDOM
+
+/* Define to 1 if you have the <inttypes.h> header file. */
+#cmakedefine HAVE_INTTYPES_H
+
+/* Define to 1 if you have the <memory.h> header file. */
+#cmakedefine HAVE_MEMORY_H
+
+/* Define if you have POSIX threads libraries and header files. */
+#cmakedefine HAVE_PTHREAD
+
+/* Define to 1 if you have the <stdint.h> header file. */
+#cmakedefine HAVE_STDINT_H
+
+/* Define to 1 if you have the <stdlib.h> header file. */
+#cmakedefine HAVE_STDLIB_H
+
+/* Define to 1 if you have the <strings.h> header file. */
+#cmakedefine HAVE_STRINGS_H
+
+/* Define to 1 if you have the <string.h> header file. */
+#cmakedefine HAVE_STRING_H
+
+/* Define to 1 if you have the <sys/random.h> header file. */
+#cmakedefine HAVE_SYS_RANDOM_H
+
+/* Define to 1 if you have the <sys/stat.h> header file. */
+#cmakedefine HAVE_SYS_STAT_H
+
+/* Define to 1 if you have the <sys/types.h> header file. */
+#cmakedefine HAVE_SYS_TYPES_H
+
+/* Define to 1 if you have the <unistd.h> header file. */
+#cmakedefine HAVE_UNISTD_H
+
+/* Name of package */
+#define PACKAGE @PACKAGE@
+
+/* Define to the address where bug reports for this package should be sent. */
+#define PACKAGE_BUGREPORT @PACKAGE_BUGREPORT@
+
+/* Define to the full name of this package. */
+#define PACKAGE_NAME @PACKAGE_NAME@
+
+/* Define to the full name and version of this package. */
+#define PACKAGE_STRING @PACKAGE_STRING@
+
+/* Define to the one symbol short name of this package. */
+#define PACKAGE_TARNAME @PACKAGE_TARNAME@
+
+/* Define to the home page for this package. */
+#define PACKAGE_URL @PACKAGE_URL@
+
+/* Define to the version of this package. */
+#define PACKAGE_VERSION @PACKAGE_VERSION@
+
+/* Define to 1 if you have the ANSI C header files. */
+#cmakedefine STDC_HEADERS
+
+/* Version number of package */
+#define VERSION @VERSION@
+
+/* Enable large inode numbers on Mac OS X 10.5.  */
+#ifndef _DARWIN_USE_64_BIT_INODE
+# define _DARWIN_USE_64_BIT_INODE 1
+#endif
+
+/* Number of bits in a file offset, on hosts where this is settable. */
+#cmakedefine _FILE_OFFSET_BITS @_FILE_OFFSET_BITS@
+
+#if 0
+/* Define to necessary symbol if this constant uses a non-standard name on
+   your system. */
+#define PTHREAD_CREATE_JOINABLE @PTHREAD_CREATE_JOINABLE@
+
+/* Fallback definition for old systems */
+#define O_CLOEXEC @O_CLOEXEC@
+
+/* Define for large files, on AIX-style hosts. */
+#cmakedefine _LARGE_FILES
+#endif
