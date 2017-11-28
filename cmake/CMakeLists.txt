@@ -29,12 +29,12 @@ IF(NOT DISABLE_HOST)
       # to a future version.
       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I${top_srcdir}/src/common/android/testing/include")
     ELSEIF(CYGWIN)
-    ELSEIF()
+    ELSE()
       # Build as PIC on Linux, for linux_client_unittest_shlib
       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
     ENDIF()
-  ELSE()
+  ENDIF()
 
   set(includeclhdir ${includedir}/${PACKAGE}/client/linux/handler)
   set(includeclh_HEADERS ${top_srcdir}/src/client/linux/handler/*.h)
@@ -53,7 +53,8 @@ IF(NOT DISABLE_HOST)
 
   set(includecldir ${includedir}/${PACKAGE}/common/linux)
   set(includecl_HEADERS ${top_srcdir}/src/common/linux/*.h)
-ENDIF()
+
+  ENDIF()
 
 set(includegbcdir ${includedir}/${PACKAGE}/google_breakpad/common)
 set(includegbc_HEADERS ${top_srcdir}/src/google_breakpad/common/*.h)

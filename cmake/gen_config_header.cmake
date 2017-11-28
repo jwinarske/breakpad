@@ -51,5 +51,5 @@ CHECK_FUNCTION_EXISTS(getrandom HAVE_GETRANDOM)
 CHECK_FILE_OFFSET_BITS ()
 
 
-CONFIGURE_FILE ("${ROOT}/cmake/config.h.in" "${ROOT}/src/config.h")
+CONFIGURE_FILE ("${top_srcdir}/cmake/config.h.in" "${top_srcdir}/src/config.h")
 
