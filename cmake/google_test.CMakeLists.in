@@ -1,0 +1,19 @@
+cmake_minimum_required(VERSION 3.3 FATAL_ERROR)
+CMAKE_POLICY(SET CMP0048 NEW)
+
+project(googletest-download VERSION ${GTEST_VERSION} LANGUAGES CXX C)
+
+MESSAGE(STATUS "Cloning GoogleTest v${GTEST_VERSION}")
+
+include(ExternalProject)
+ExternalProject_Add(googletest
+    GIT_REPOSITORY https://github.com/google/googletest.git
+    GIT_TAG release-@GTEST_VERSION@
+    UPDATE_COMMAND ""
+    SOURCE_DIR "${CMAKE_BINARY_DIR}/googletest-src"
+    BINARY_DIR "${CMAKE_BINARY_DIR}/googletest-build"
+    CONFIGURE_COMMAND ""
+    BUILD_COMMAND ""
+    INSTALL_COMMAND ""
+    TEST_COMMAND ""
+)

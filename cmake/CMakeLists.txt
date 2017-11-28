@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.3 FATAL_ERROR)
+CMAKE_POLICY(SET CMP0048 NEW)
 
 set(top_srcdir ${CMAKE_SOURCE_DIR}/..)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${top_srcdir}/cmake)
@@ -9,9 +10,18 @@ PROJECT(${PACKAGE_NAME} VERSION "${PACKAGE_VERSION}" LANGUAGES C CXX)
 
 set (CMAKE_CXX_STANDARD 11)
 
-OPTION(DISABLE_PROCESSOR "" OFF)
-OPTION(DISABLE_TOOLS "" OFF)
-OPTION(DISABLE_HOST "" OFF)
+set(GTEST_VERSION 1.8.0)
+
+OPTION(DISABLE_HOST "Don't build host tools" OFF)
+OPTION(ENABLE_M32 "Compile/build with -m32" OFF)
+OPTION(DISABLE_LARGEFILE "omit support for large files" OFF)
+OPTION(DISABLE_PROCESSOR "Don't build processor library" OFF)
+OPTION(DISABLE_TOOLS "Don't build tool binaries" OFF)
+OPTION(ENABLE_SYSTEM_TEST_LIBS "Use gtest/gmock/etc... from the system instead of
+the local copies" OFF)
+OPTION(ENABLE_SELFTEST "Run extra tests with 'make check' (may conflict with
+optimizations)" OFF)
+
 
 include(gen_config_header)
 include(create_pkg_files)
@@ -68,3 +78,19 @@ set(includep_HEADERS ${top_srcdir}/src/processor/*.h)
 # Documentation
 set(docdir ${prefix}/share/doc/${PACKAGE}-${VERSION})
 
+enable_testing()
+IF (NOT ENABLE_SYSTEM_TEST_LIBS)
+  include (google_test_external)
+ELSE()
+  FIND_PACKAGE(PkgConfig)
+  IF (PKG_CONFIG_FOUND)
+    PKG_CHECK_MODULES(GTEST googletest)
+    IF (GTEST_FOUND)
+      MESSAGE(STATUS "System GoogleTest found!")
+    ELSE ()
+      MESSAGE(STATUS "System GoogleTest not found!")
+    ENDIF ()
+  ENDIF ()
+ENDIF()
+
+ADD_CUSTOM_TARGET(uninstall "${CMAKE_COMMAND}" -P "${CMAKE_SOURCE_DIR}/cmake/make_uninstall.cmake")
